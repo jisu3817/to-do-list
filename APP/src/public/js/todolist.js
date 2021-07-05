@@ -6,7 +6,7 @@ const enrollBtn = document.querySelector("button");
 const table = document.querySelector("#table table");
 
 enrollBtn.addEventListener("click", () => {
-    fetch('/api/todolist', {
+    fetch('/todolist', {
         method: 'POST',
         headers: {
             "Content-Type" : "application/json" 
@@ -44,7 +44,7 @@ table.addEventListener("click", (e) => {
 
 function update(tr) {
     const index = tr.getAttribute("index");
-    fetch(`/api/todolist/${index}`, {
+    fetch(`/todolist/${index}`, {
         method: 'PUT',
         headers: {
             "Content-Type" : "application/json" 
@@ -66,7 +66,7 @@ function update(tr) {
 
 function deletebtn(tr) {
     const index = tr.getAttribute("index");
-    fetch(`/api/todolist/${index}`, {
+    fetch(`/todolist/${index}`, {
         method: 'DELETE',
         headers: {
             "Content-Type" : "application/json" 
