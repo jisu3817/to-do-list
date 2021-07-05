@@ -5,7 +5,7 @@ const app = express();
 
 const PORT = 3000;
 
-const indexRouter = require('./src/routes');
+const indexRouter = require('./APP/src/routes');
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
