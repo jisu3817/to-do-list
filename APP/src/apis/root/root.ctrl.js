@@ -1,10 +1,10 @@
 "use strict";
 const crypto = require("crypto");
-const { User } = require("../../src/models/db.js")
+const { User } = require("../../models/db.js")
 
 const todolist = {
   read: (req, res) => {
-    res.render('index');
+    res.render('todolist');
   },
 
   create: (req, res) => { 

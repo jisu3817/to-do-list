@@ -8,7 +8,7 @@ const table = document.querySelector("#table table");
 enrollBtn.addEventListener("click", () => {
     if (name.value === '' || description.value === '') alert('To Do를 등록 해 주세요.');
     else {
-        fetch('/todolist', {
+        fetch('/api/todolist', {
             method: 'POST',
             headers: {
                 "Content-Type" : "application/json" 
@@ -47,7 +47,7 @@ table.addEventListener("click", (e) => {
 
 function update(tr) {
     const index = tr.getAttribute("index");
-    fetch(`/todolist/${index}`, {
+    fetch(`/api/todolist/${index}`, {
         method: 'PUT',
         headers: {
             "Content-Type" : "application/json" 
@@ -69,7 +69,7 @@ function update(tr) {
 
 function deletebtn(tr) {
     const index = tr.getAttribute("index");
-    fetch(`/todolist/${index}`, {
+    fetch(`/api/todolist/${index}`, {
         method: 'DELETE',
         headers: {
             "Content-Type" : "application/json" 

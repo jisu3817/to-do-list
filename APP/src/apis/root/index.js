@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const ctrl = require('./routes.ctrl');
+const ctrl = require('./root.ctrl');
 
 router.get('/todolist',ctrl.todolist.read);
 router.post('/todolist',ctrl.todolist.create);
