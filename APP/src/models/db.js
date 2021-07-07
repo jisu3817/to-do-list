@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
+const mongo_URI = process.env.mongo_URI;
 
 mongoose
-.connect("mongodb+srv://jisu:201916022@todolist.uivgl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+.connect(mongo_URI, {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 })
 .then(() => console.log('MongoDB Connected...'))
