@@ -6,33 +6,36 @@ const enrollBtn = document.querySelector("button");
 const table = document.querySelector("#table table");
 
 enrollBtn.addEventListener("click", () => {
-    fetch('/todolist', {
-        method: 'POST',
-        headers: {
-            "Content-Type" : "application/json" 
-        },
-        body: JSON.stringify({
-            name: name.value,
-            description: description.value
-        }),
-    })
-    .then(res => res.text())
-    .then(index => {
-        if(index) {
-            const newRow = table.insertRow(-1);
-            newRow.setAttribute("index", index);
-            const newCell1 = newRow.insertCell(0);
-            const newCell2 = newRow.insertCell(1);
-            const newCell3 = newRow.insertCell(2);
-            const newCell4 = newRow.insertCell(3);
+    if (name.value === '' || description.value === '') alert('To Do를 등록 해 주세요.');
+    else {
+        fetch('/todolist', {
+            method: 'POST',
+            headers: {
+                "Content-Type" : "application/json" 
+            },
+            body: JSON.stringify({
+                name: name.value,
+                description: description.value,
+            }),
+        })
+        .then(res => res.text())
+        .then(index => {
+            if(index) {
+                const newRow = table.insertRow(-1);
+                newRow.setAttribute("index", index);
+                const newCell1 = newRow.insertCell(0);
+                const newCell2 = newRow.insertCell(1);
+                const newCell3 = newRow.insertCell(2);
+                const newCell4 = newRow.insertCell(3);
 
-            newCell1.innerText = name.value;
-            newCell2.innerText = description.value;
-            newCell3.innerHTML = '<button id="td-update"> 수정 </button>';
-            newCell4.innerHTML = '<button id="td-delete"> 삭제 </button>';  
-        }
-        else alert("To Do 등록에 실패하셨습니다.")
-    })
+                newCell1.innerText = name.value;
+                newCell2.innerText = description.value;
+                newCell3.innerHTML = '<button id="td-update"> 수정 </button>';
+                newCell4.innerHTML = '<button id="td-delete"> 삭제 </button>';  
+            }
+            else alert("To Do 등록에 실패하셨습니다.")
+        })
+    }
 });
 
 table.addEventListener("click", (e) => {
@@ -80,7 +83,7 @@ function deletebtn(tr) {
             tr.childNodes[2].innerHTML = "";
             tr.childNodes[3].innerHTML = "";          
         }
-        else alert("To Do 등록에 실패하셨습니다.");
+        else alert("To Do 삭제에 실패했습니다.");
     })
 };
 
